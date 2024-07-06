@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package grpc.spring.boot.test.performance;
+
+option java_multiple_files = true;
+option java_package = "grpc.spring.boot.test.performance.models";
+
+service PersonService {
+  rpc CreatePerson (PersonRequest) returns (PersonResponse);
+  rpc GetAllPeople (Empty) returns (stream PersonResponse);
+}
+
+message PersonRequest {
+  string name = 1;
+  int32 age = 2;
+}
+
+message PersonResponse {
+  string id = 1;
+  string name = 2;
+  int32 age = 3;
+}
+
+message Empty {
+}
